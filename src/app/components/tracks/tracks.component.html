@@ -1,0 +1,21 @@
+<ion-list>
+  <ion-item >
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item *ngFor="let track of tracks" button (click)="play(track)">
+            <ion-icon name="musical-note" slot="start"></ion-icon>
+            <ion-label>{{track.name}}</ion-label>
+            <ion-buttons slot="end">
+              <ion-button (click)="options()">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+   
+  </ion-item>
+</ion-list>

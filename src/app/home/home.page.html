@@ -1,20 +1,49 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header> 
+    <ion-toolbar >
+        <ion-buttons slot="end">
+            <ion-button (click)="onClick()">
+                <ion-icon slot="icon-only" name="musical-notes-outline"></ion-icon>
+                
+            </ion-button>
+            <ion-button (click)="onClick()">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+                
+            </ion-button>
+        </ion-buttons>
+        <ion-title color="danger" style="font-weight: bolder; font-size: 25px;">Music</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+    <ion-segment color="danger" value="Albums" (ionChange)="segmentChanged($event)" scrollable>
+        <ion-segment-button value="Albums">
+            <ion-label>Albums</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Artists">
+            <ion-label>Artists</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Tracks">
+            <ion-label>Tracks</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Playlists">
+            <ion-label>Playlists</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Genres">
+            <ion-label>Genres</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Folders">
+            <ion-label>Folders</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+   <app-musiclist *ngIf="segment=='Artists'"></app-musiclist>
+    <app-albums *ngIf="segment=='Albums'"></app-albums>
+    <app-tracks *ngIf="segment=='Tracks'"></app-tracks>
+    <app-playlists *ngIf="segment=='Playlists'"></app-playlists>
+    <app-genres *ngIf="segment=='Genres'"></app-genres>
+    <app-folders *ngIf="segment=='Folders'"></app-folders>
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+       <ion-fab-button color="danger">
+           <ion-icon name="shuffle"></ion-icon>
+       </ion-fab-button>
+   </ion-fab>
 </ion-content>

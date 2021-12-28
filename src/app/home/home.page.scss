@@ -25,3 +25,11 @@
 #container a {
   text-decoration: none;
 }
+
+.center {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

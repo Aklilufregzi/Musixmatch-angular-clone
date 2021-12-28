@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    
+    <ion-title>{{track.name}}</ion-title>
+    <span style="margin-left: 1.5rem;">{{track.artist}}</span>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClick()">
+        <ion-icon slot="icon-only" name="list"></ion-icon>
+        
+      </ion-button>
+      <ion-button (click)="onClick()">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+
+  <ion-card color="medium" style="border-radius: 8px;">
+    
+    <ion-card-content style="font-size: 28px;">
+      {{track.lyrics.content}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-footer color="light" style="background-color: white;">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="3">
+        <span>{{position}}</span>
+      </ion-col>
+      <ion-col size="3" style="position: absolute; right: 0;">
+        <span>{{position}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-range
+        
+    [min]="0" [max]="playing.duration()"
+    *ngIf="songplaying"
+    color="dark"
+    (ionChange)="rangeChange($event)">
+    
+  </ion-range>
+      </ion-col>
+     
+    </ion-row>
+  </ion-grid>
+  
+ 
+  <div >
+    
+          <ion-buttons slot="start" class="container">
+            <ion-button id="contrib" (click)="onClick()" slot="end" >
+              <ion-icon style="font-size: 30px;" name="ellipsis-horizontal-circle-outline"></ion-icon>
+              
+            </ion-button>
+            <ion-button (click)="back()" slot="end" >
+              <ion-icon style="font-size: 30px;" slot="icon-only" name="play-skip-back"></ion-icon>
+              
+            </ion-button>
+            <ion-button (click)="pausePlay()" slot="end" fill="solid" shape="round" style="height: 50px; width: 50px;" >
+              <ion-icon *ngIf="!songplaying" style="font-size: 30px;" slot="icon-only" name="play"></ion-icon>
+              <ion-icon *ngIf="songplaying" style="font-size: 30px;" slot="icon-only" name="pause"></ion-icon>
+              
+            </ion-button>
+            <ion-button (click)="next()" slot="end" >
+              <ion-icon style="font-size: 30px;" slot="icon-only" name="play-skip-forward"></ion-icon>
+              
+            </ion-button>
+
+            <ion-button id="share" (click)="onClick()" slot="end" >
+              <ion-icon style="font-size: 30px;" slot="icon-only" name="share-social-outline"></ion-icon>
+              
+            </ion-button>
+
+          </ion-buttons>
+     
+  </div>
+ 
+</ion-footer>

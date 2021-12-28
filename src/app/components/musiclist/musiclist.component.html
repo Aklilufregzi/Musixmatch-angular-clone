@@ -1,0 +1,14 @@
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="6" *ngFor="let artist of artists">
+      <ion-card button (click)="toAlbum(artist.id)">
+
+        <ion-card-content>
+          <ion-img style="height: 100%; width: 100%;" [src]="artist.cover"></ion-img>
+        <span>{{artist.name}}</span>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    
+  </ion-row>
+</ion-grid>

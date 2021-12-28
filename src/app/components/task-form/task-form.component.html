@@ -1,0 +1,14 @@
+<form (ngSubmit)="submit()" [formGroup]="taskForm" >
+  <ion-item>
+    <ion-label position="floating">title</ion-label>
+    <ion-input formControlName="title" type="text" placeholder="task title here"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Due Date</ion-label>
+    <ion-datetime formControlName="dueDate" display-format="DD.MM.YYYY HH:mm"></ion-datetime>
+  </ion-item>
+
+  <ion-button [disabled]="!taskForm.valid" type="submit"  expand="block"  shape="round">
+    add task
+  </ion-button>
+</form>

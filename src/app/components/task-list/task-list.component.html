@@ -1,0 +1,14 @@
+<ion-list>
+
+  <ng-container *ngFor="let task of tasks">
+    <ion-item *ngIf="!task.done" (click)="check(task.id)">
+      <ion-label>{{task.title}}</ion-label>
+      <span >{{task.dueDate |date}}</span>
+      <ion-checkbox></ion-checkbox>
+    </ion-item>
+
+  </ng-container>
+
+  
+  
+</ion-list>

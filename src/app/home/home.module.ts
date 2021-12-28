@@ -2,18 +2,30 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-
+import { HomePageComponent } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
-
-
+import { TaskListComponent } from '../components/task-list/task-list.component';
+import { MusiclistComponent } from '../components/musiclist/musiclist.component';
+import { AlbumsComponent } from './../components/albums/albums.component';
+import { TracksComponent } from './../components/tracks/tracks.component';
+import { PlaylistsComponent } from './../components/playlists/playlists.component';
+import { GenresComponent } from '../components/genres/genres.component';
+import { FoldersComponent } from '../components/folders/folders.component';
+import { PlayerComponent } from '../components/player/player.component';
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule
+  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  declarations: [
+    HomePageComponent,
+    TaskListComponent,
+    MusiclistComponent,
+    AlbumsComponent,
+    TracksComponent,
+    PlaylistsComponent,
+    GenresComponent,
+    FoldersComponent,
+    PlayerComponent,
   ],
-  declarations: [HomePage]
 })
-export class HomePageModule {}
+export class HomePageModule {
+  constructor() {}
+}

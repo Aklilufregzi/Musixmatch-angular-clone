@@ -1,3 +1,13 @@
-<p>
-  playing works!
-</p>
+<div class="playing" (click)="openPlayer()">
+ <ion-item>
+   <ion-avatar slot="start" style="border-radius: 0px;">
+     <img src="assets/bob.jpeg" />
+   </ion-avatar>
+   <ion-label>Bob Marley & the wailers</ion-label><br>
+   <span>Kaya</span>
+   <ion-button (click)="onClick()" shape="round" fill="clear">
+     <ion-icon slot="icon-only" name="play"></ion-icon>
+   </ion-button>
+ </ion-item>
+</div>
+

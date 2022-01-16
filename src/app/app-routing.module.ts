@@ -11,7 +11,7 @@ import { HomePageComponent } from './home/home.page';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'root/home',
+    redirectTo: 'root/music',
     pathMatch: 'full',
   },
 

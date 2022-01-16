@@ -12,8 +12,20 @@ import { PlaylistsComponent } from './../components/playlists/playlists.componen
 import { GenresComponent } from '../components/genres/genres.component';
 import { FoldersComponent } from '../components/folders/folders.component';
 import { PlayerComponent } from '../components/player/player.component';
+import { PlayingComponent } from '../components/playing/playing.component';
+import { PlayingModule } from '../components/playing/playing.module';
+import { OptionsModule } from '../components/pop/options/options.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomePageRoutingModule,
+    PlayingModule,
+    OptionsModule,
+    HttpClientModule,
+  ],
   declarations: [
     HomePageComponent,
     TaskListComponent,

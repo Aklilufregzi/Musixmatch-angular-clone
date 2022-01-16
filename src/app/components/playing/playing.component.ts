@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playing',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playing.component.scss'],
 })
 export class PlayingComponent implements OnInit {
+  constructor(private router: Router) {}
 
-  constructor() { }
+  openPlayer() {
+    this.router.navigateByUrl('player');
+  }
 
   ngOnInit() {}
-
 }

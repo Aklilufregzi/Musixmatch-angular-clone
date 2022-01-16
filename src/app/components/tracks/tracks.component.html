@@ -2,18 +2,33 @@
   <ion-item >
     <ion-grid fixed>
       <ion-row>
-        <ion-col size="12">
-          <ion-item *ngFor="let track of tracks" button (click)="play(track)">
-            <ion-icon name="musical-note" slot="start"></ion-icon>
-            <ion-label>{{track.name}}</ion-label>
-            <ion-buttons slot="end">
-              <ion-button (click)="options()">
+       
+
+          <ng-container *ngFor="let track of tracks" >
+            <ion-col size="9">
+            <ion-item  button (click)="play(track)">
+              <ion-icon name="musical-note" slot="start"></ion-icon>
+              <ion-label>{{track.name}}</ion-label>
+              
+            </ion-item>
+          </ion-col>
+
+
+          <ion-col size="3">
+            
+              <ion-button (click)="options($event)" fill="clear" color="dark">
                 <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
                 
               </ion-button>
-            </ion-buttons>
-          </ion-item>
-        </ion-col>
+            
+          </ion-col>
+
+          </ng-container>
+          
+        
+       
+
+   
       </ion-row>
     </ion-grid>
    

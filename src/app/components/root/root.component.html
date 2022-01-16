@@ -1,19 +1,19 @@
 
 <ion-tabs >
-  <ion-tab-bar slot="bottom" >
-    <ion-tab-button tab="home" >
+  <ion-tab-bar id="bar"  slot="bottom" >
+    <ion-tab-button id="home" tab="home" >
       <ion-icon name="home" size="small"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="music">
+    <ion-tab-button tab="music" id="music">
       <ion-icon size="small" name="musical-note-outline"></ion-icon>
       <ion-label>Music</ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="identify">
+    <ion-tab-button tab="identify" id="identify">
       <ion-icon size="small" name="disc-outline"></ion-icon>
       <ion-label>Identify</ion-label>
     </ion-tab-button>
-    <ion-tab-button (click)="search()">
+    <ion-tab-button (click)="search()" id="search">
       <ion-icon size="small" name="search-outline"></ion-icon>
       <ion-label>Search</ion-label>
     </ion-tab-button>

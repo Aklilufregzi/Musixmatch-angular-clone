@@ -1,4 +1,4 @@
-<ion-header> 
+<ion-header   class="ion-no-border"> 
     <ion-toolbar >
         <ion-buttons slot="end">
             <ion-button (click)="onClick()">
@@ -42,8 +42,15 @@
     <app-genres *ngIf="segment=='Genres'"></app-genres>
     <app-folders *ngIf="segment=='Folders'"></app-folders>
    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-       <ion-fab-button color="danger">
+       <ion-fab-button color="danger" *ngIf="segment!= 'Playlists'">
            <ion-icon name="shuffle"></ion-icon>
        </ion-fab-button>
+       <ion-fab-button color="dark" *ngIf="segment== 'Playlists'">
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
    </ion-fab>
 </ion-content>
+
+<ion-footer>
+    <app-playing></app-playing>
+</ion-footer>

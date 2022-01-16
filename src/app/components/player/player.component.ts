@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Howl, Howler } from 'howler';
 import { Track } from 'src/app/models/artist.model';
+import { Line } from 'src/app/models/lyrics.model';
 import { LyricsService } from 'src/app/services/lyrics.service';
+import { PlayerService } from 'src/app/services/player.service';
 import { SongService } from 'src/app/services/song.service';
 @Component({
   selector: 'app-player',
@@ -10,16 +12,22 @@ import { SongService } from 'src/app/services/song.service';
   styleUrls: ['./player.component.scss'],
 })
 export class PlayerComponent implements OnInit {
+  currentLineStyle: string;
+  currentLine: Line;
+  line: string;
   track: Track;
   duration: number;
   playing;
   current;
   songplaying = false;
   position: number;
+
+  noneCurrentLineStyle = 'color: grey; font-size: 20';
   constructor(
     private lyricsService: LyricsService,
     private activatedRoute: ActivatedRoute,
-    private songService: SongService
+    private songService: SongService,
+    public ps: PlayerService
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.track = JSON.parse(params.track);
@@ -27,50 +35,66 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.songplaying) {
-      this.pausePlay();
-    }
-    this.playing = new Howl({ src: this.track.src });
+    //  let p = new Howler({ src: '' });
+
+    this.ps.playSound(this.track.src);
     this.songplaying = true;
-    this.current = this.playing.play();
-    console.log(this.playing._duration);
   }
 
   pausePlay() {
-    console.log(this.playing.id);
     if (this.songplaying) {
       this.songplaying = false;
-      this.playing.pause(this.current);
+      this.ps.sound.pause(this.current);
     } else {
       this.songplaying = true;
-      this.playing.play();
+      this.ps.sound.play();
     }
   }
 
   next() {
-    this.playing.stop();
+    this.ps.sound.stop();
     let t = this.songService.getTrack(this.track.id + 1);
     console.log(this.songService.getTrack(this.track.id + 1));
-    this.playing = new Howl({ src: t.src });
+    this.ps.sound = new Howl({ src: t.src });
     this.track = t;
-    this.playing.play();
+    this.ps.sound.play();
   }
 
   back() {
-    this.playing.stop();
+    if (this.track.id == 1) {
+      this.ps.sound.stop();
+      let t = this.songService.getTrack(
+        this.songService.getTracks().length - 1
+      );
+
+      console.log(t);
+      this.ps.playSound(t.src);
+      this.track = t;
+      this.ps.sound.play();
+    } else {
+      this.ps.sound.stop();
+      let t = this.songService.getTrack(this.track.id - 1);
+      console.log(this.songService.getTrack(this.track.id - 1));
+      this.ps.playSound(t.src);
+      this.track = t;
+      this.ps.sound.play();
+    }
+
+    this.ps.sound.stop();
     let t = this.songService.getTrack(this.track.id - 1);
     console.log(this.songService.getTrack(this.track.id - 1));
-    this.playing = new Howl({ src: t.src });
+    this.ps.playSound(t.src);
     this.track = t;
-    this.playing.play();
+    this.ps.sound.play();
   }
 
-  seek() {}
-
-  sync() {}
+  sync() {
+    //start a timer and sync with set interval
+    setInterval(function () {}, 1000);
+  }
 
   rangeChange(e) {
     this.position = e.target.value;
-    this.playing.seek(e.target.value);
+    this.ps.sound.seek(e.target.value);
   }
 }
